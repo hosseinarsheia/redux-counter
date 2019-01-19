@@ -1,23 +1,20 @@
-import React  from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import {inc, dec} from '../actions'
+import {inc, dec} from '../actions/index'
 
-const Counter = props =>  {
-        console.log(props)
-        return (
-        <div>
-          <h1>Count: {props.counter.count} </h1>
-          <button onClick={() => props.inc()}>increment</button>
-          <button onClick={() => props.dec()}>decrement</button>
-        </div>
-      )
-   }
-
-
-
-const mapStateToProps = state => {
-    return {
-        counter: state.counter
-    }
+const Counter = (props) => {
+    console.log(props)
+  return (
+    <div>
+    <h1>counter :{props.counter}</h1>
+      <button onClick={() => props.inc()}>incremnet</button>
+      <button onClick={() => props.dec()}>decrement</button>
+    </div>
+  )
 }
-export default connect(mapStateToProps,{inc , dec})(Counter);
+
+const mapState = state => {
+   return {counter : state.counter}
+}
+
+export default connect(mapState,{inc, dec})(Counter)
